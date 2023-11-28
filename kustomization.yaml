@@ -7,7 +7,7 @@ patches:
   - patch: |-
       - op: replace
         path: /spec/template/spec/containers/0/image
-        value: cgr.dev/chainguard/cert-manager-controller:latest@sha256:19d059872f40072c6519ad2b5c0e2ee9170b13050ac4bca9ab9e60fcf62c3ee7
+        value: cgr.dev/chainguard/cert-manager-controller:latest@sha256:138938a07bdf15a06de39f93fb0f97ac2eb4c186b55b8c2db75c2be75cebf558
     target:
       group: apps
       kind: Deployment
