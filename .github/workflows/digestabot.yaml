@@ -1,0 +1,30 @@
+# Copyright 2022 Chainguard, Inc.
+# SPDX-License-Identifier: Apache-2.0
+
+name: Image digest update
+
+on:
+  workflow_dispatch:
+  # schedule:
+  #   - cron: "0 1 * * *"
+
+jobs:
+  image-update:
+    name: Image digest update
+    runs-on: ubuntu-latest
+    if: ${{ github.repository_owner }} == 'cpanato'
+
+    permissions:
+      contents: write
+      pull-requests: write
+      id-token: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: chainguard-dev/digestabot@main
+        id: digest-bot
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - run: echo "PR number ${{ steps.digest-bot.outputs.pull_request_number }}"
